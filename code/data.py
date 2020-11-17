@@ -1,5 +1,7 @@
 # Reading in sentiment data to create corpus
 
+from zipfile import ZipFile # for reading amazon review zip
+import pandas as pd
 import nltk # Natural Language Toolkit
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -63,4 +65,15 @@ def get_sentiment_corpus_and_labels():
     sentiment_labels = amazon_labels
 
     return sentiment_corpus, sentiment_labels
-          
+
+def get_amazon_reviews_corpus_and_labels():
+    zip_file = ZipFile('datasets/amazon_reviews.zip')
+    raw_dataframe = pd.read_csv(zip_file.open('amazon_reviews.csv'))
+    col_names = list(raw_dataframe.columns) # get categories in review dataset
+    raw_rating_text = raw_dataframe['reviews.text'] # uncleaned text
+    rating_text = []
+    for review in raw_rating_text: # clean rating text
+        rating_text.append(clean_text(review))
+    rating_labels = raw_dataframe['reviews.rating'] # original ratings
+    return rating_text, rating_labels
+    
