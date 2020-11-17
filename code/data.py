@@ -62,5 +62,5 @@ def get_sentiment_corpus_and_labels():
     amazon_labels.extend(yelp_labels)
     sentiment_labels = amazon_labels
 
-    return sentiment_corpus, sentiment_labels # return corpus and labels
+    return sentiment_corpus, sentiment_labels
           
