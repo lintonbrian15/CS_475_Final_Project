@@ -27,7 +27,7 @@ def clean_text(text):
 
     return ' '.join(tokens)
 
-if __name__ == "__main__":
+def get_sentiment_corpus_and_labels():
     amazon_labels = []
     amazon_sentences = []
     with open('datasets/amazon_sentiments.txt') as amazon_sentiments:
@@ -37,4 +37,30 @@ if __name__ == "__main__":
             string = " "
             amazon_sentences.append(clean_text(string.join(text))) # get cleaned text data
             amazon_labels.append(line[-1]) # get label
+    imdb_labels = []
+    imdb_sentences = []
+    with open('datasets/imdb_sentiments.txt') as imdb_sentiments:
+        for line in imdb_sentiments:
+            line = line.split()
+            text = line[:-1] # get all words except label
+            string = " "
+            imdb_sentences.append(clean_text(string.join(text))) # get cleaned text data
+            imdb_labels.append(line[-1]) # get label
+    yelp_labels = []
+    yelp_sentences = []
+    with open('datasets/yelp_sentiments.txt') as yelp_sentiments:
+        for line in yelp_sentiments:
+            line = line.split()
+            text = line[:-1] # get all words except label
+            string = " "
+            yelp_sentences.append(clean_text(string.join(text))) # get cleaned text data
+            yelp_labels.append(line[-1]) # get label
+    amazon_sentences.extend(imdb_sentences)
+    amazon_sentences.extend(yelp_sentences)
+    sentiment_corpus = amazon_sentences
+    amazon_labels.extend(imdb_labels)
+    amazon_labels.extend(yelp_labels)
+    sentiment_labels = amazon_labels
+
+    return sentiment_corpus, sentiment_labels
           
