@@ -5,7 +5,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 stopwords = set(nltk.corpus.stopwords.words('english'))
 
-# The following was taken from data.py in HW4 from CS_475
+# Method clean_text was taken from data.py in HW4 from CS_475
 
 def clean_text(text):
     """
