@@ -8,6 +8,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn import svm
 from sklearn.metrics import classification_report
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import GridSearchCV
+from sklearn.ensemble import BaggingClassifier
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -72,6 +74,8 @@ def baseline_classify():
     'max_iter': [i for i in range(10,5000,20)], 'probability':[True]}
     model = svm.SVC()
     hp_search = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=10, random_state=12345)
+    hp_search = BaggingClassifier(base_estimator=hp_search, n_estimators=10, random_state=0)
+    #hp_search = GridSearchCV(estimator=model, param_grid=param_grid)
     hp_search = hp_search.fit(train_feature_set, Y_train)
     predictions = hp_search.predict(test_feature_set)
     print('tuned parameters: {}'.format(hp_search.best_params_))
