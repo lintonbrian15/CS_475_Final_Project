@@ -21,8 +21,8 @@ def get_args():
     parser = argparse.ArgumentParser(description="Choose model.")
 
     parser.add_argument("--model", type=str, choices=['logistic', 'svm'], required=True, help="Which model do you want to use (logistic, svm, etc.) .")
-    parser.add_argument("--mode", type=str, required=True, choices=["train", "test"],
-                        help="Operating mode: train or test.")
+    # parser.add_argument("--mode", type=str, required=True, choices=["train", "test"],
+    #                     help="Operating mode: train or test.")
     parser.add_argument("--kernel", type=str, required=True, choices=["count", "tfidf"],
                         help="Kernel function to use. Options include: count or tfidf.")
     # parser.add_argument("--model-file", type=str, required=True,
@@ -62,7 +62,6 @@ def baseline_classify():
         'max_iter': [i for i in range(10,5000,20)]}
         model = LogisticRegression()
 
-    # this section adapted from https://medium.com/@vasista/sentiment-analysis-using-svm-338d418e3ff1
     elif args.model == "svm":
         # Perform classification with SVM, kernel=linear
         classifier_linear = svm.SVC(kernel='linear')
@@ -95,5 +94,4 @@ def baseline_classify():
 
 if __name__ == "__main__":
     args = get_args()
-    if (args.mode == 'train'):
-        baseline_classify()
+    baseline_classify()
