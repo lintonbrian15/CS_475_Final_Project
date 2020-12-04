@@ -3,6 +3,7 @@
 from zipfile import ZipFile # for reading amazon review zip
 import pandas as pd
 import nltk # Natural Language Toolkit
+from nltk.tokenize import sent_tokenize
 nltk.download('punkt')
 nltk.download('stopwords')
 stopwords = set(nltk.corpus.stopwords.words('english'))
@@ -73,7 +74,15 @@ def get_amazon_reviews_corpus_and_labels():
     raw_rating_text = raw_dataframe['reviews.text'] # uncleaned text
     rating_text = []
     for review in raw_rating_text: # clean rating text
-        rating_text.append(clean_text(review))
+        #rating_text.append(clean_text(review))
+        indiv_rating = []
+        indiv_rating.append(sent_tokenize(review))
+        cleaned = []
+        for i in range(0, len(indiv_rating[0])):
+            cleaned.append(clean_text(indiv_rating[0][i]))
+        rating_text.append(cleaned) # break reviews into sentences then add array of sentences to rating text
     rating_labels = raw_dataframe['reviews.rating'] # original ratings
     return rating_text, rating_labels
     
+if __name__ == "__main__":
+    get_amazon_reviews_corpus_and_labels()

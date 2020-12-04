@@ -78,8 +78,10 @@ def baseline_classify():
     #hp_search = GridSearchCV(estimator=model, param_grid=param_grid)
     hp_search = hp_search.fit(train_feature_set, Y_train)
     predictions = hp_search.predict(test_feature_set)
-    print('tuned parameters: {}'.format(hp_search.best_params_))
-    print('best score is {}'.format(hp_search.best_score_))
+    #print('tuned parameters: {}'.format(hp_search.best_params_))
+    print('tuned parameters: {}'.format(hp_search.get_params()))
+    #print('best score is {}'.format(hp_search.best_score_))
+    print('best score is {}'.format(hp_search.score(test_feature_set, Y_test)))
 
     return hp_search
 
