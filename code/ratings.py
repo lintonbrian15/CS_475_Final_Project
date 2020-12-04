@@ -3,6 +3,7 @@ from data import get_amazon_reviews_corpus_and_labels
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.model_selection import train_test_split
 import numpy as np
+from numpy import savetxt
 import pickle
 
 if __name__ == "__main__":
@@ -34,4 +35,8 @@ if __name__ == "__main__":
             new_ratings.append(2)
         elif pred_ratio >= 0.00:
             new_ratings.append(1)
+    amazon_labels = np.array(amazon_labels)
+    new_ratings = np.array(new_ratings)
+    savetxt('datasets\svm_new_ratings.csv', new_ratings, delimiter=',') # save as csv file
+    savetxt('datasets\original_amazon_ratings.csv', amazon_labels, delimiter=',') # save as csv file
     #test = cv.transform(amazon_corpus[0[0]])
