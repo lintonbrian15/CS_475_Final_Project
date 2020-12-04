@@ -21,8 +21,8 @@ def get_args():
     parser = argparse.ArgumentParser(description="Choose model.")
 
     parser.add_argument("--model", type=str, choices=['logistic', 'svm'], required=True, help="Which model do you want to use (logistic, svm, etc.) .")
-    parser.add_argument("--mode", type=str, required=True, choices=["train", "test"],
-                        help="Operating mode: train or test.")
+    # parser.add_argument("--mode", type=str, required=True, choices=["train", "test"],
+    #                     help="Operating mode: train or test.")
     parser.add_argument("--kernel", type=str, required=True, choices=["count", "tfidf"],
                         help="Kernel function to use. Options include: count or tfidf.")
     # parser.add_argument("--model-file", type=str, required=True,
@@ -51,30 +51,37 @@ def baseline_classify():
         lr = LogisticRegression(solver = 'liblinear', random_state = 42, max_iter=1000) # define classifier lr is simple for baseline
         lr.fit(train_feature_set, Y_train) # fit model
         y_pred = lr.predict(test_feature_set) # make predictions
-        # print("Accuracy: ", round(accuracy_score(Y_test,y_pred),7)) # get accuracy to 7 decimal places
+        print("Accuracy: ", round(accuracy_score(Y_test,y_pred),7)) # get accuracy to 7 decimal places
         report = classification_report(Y_test, y_pred, output_dict=True)
         print('positive: ', report['1'])
         print('negative: ', report['0'])
 
-    # this section adapted from https://medium.com/@vasista/sentiment-analysis-using-svm-338d418e3ff1
+        # set hyperparameters tuning grid 
+        param_grid={'solver':['newton-cg', 'lbfgs','liblinear', 'saga'],
+        'tol':[1e-5, 1e-4,1e-3, 1e-2, 1e-1], 'C': [0.25, 0.5, 1.0],
+        'max_iter': [i for i in range(10,5000,20)]}
+        model = LogisticRegression()
+
     elif args.model == "svm":
         # Perform classification with SVM, kernel=linear
         classifier_linear = svm.SVC(kernel='linear')
         classifier_linear.fit(train_feature_set, Y_train)
         y_pred = classifier_linear.predict(test_feature_set)
-        # print("Accuracy: ", round(accuracy_score(Y_test,y_pred),7))
+        print("Accuracy: ", round(accuracy_score(Y_test,y_pred),7))
         report = classification_report(Y_test, y_pred, output_dict=True)
         print('positive: ', report['1'])
         print('negative: ', report['0'])
 
-    # Perform a hyperparameter search on SVM using training data
-    param_grid={'kernel': ['linear', 'rbf', 'poly','sigmoid'], 'gamma': ['auto', 1e-3, 100,10,'scale'],
-    'tol':[0.0001,0.001,0.01], 'C':[0.1,1,10,100],
-    'degree':[i for i in range(1,500,2)], 
-    'max_iter': [i for i in range(10,5000,20)], 'probability':[True]}
-    model = svm.SVC()
-    hp_search = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=10, random_state=12345)
-    hp_search = BaggingClassifier(base_estimator=hp_search, n_estimators=10, random_state=0)
+        # set hyperparameters tuning grid 
+        param_grid={'kernel': ['linear', 'rbf', 'poly','sigmoid'], 'gamma': ['auto', 1e-3, 100,10,'scale'],
+        'tol':[0.0001,0.001,0.01], 'C':[0.1,1,10,100],
+        'degree':[i for i in range(1,500,2)], 
+        'max_iter': [i for i in range(10,5000,20)], 'probability':[True]}
+        model = svm.SVC()
+
+    # Perform a hyperparameter search using training data
+    hp_search = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=50, random_state=12345, cv=5)
+    # hp_search = BaggingClassifier(base_estimator=hp_search, n_estimators=10, random_state=0)
     #hp_search = GridSearchCV(estimator=model, param_grid=param_grid)
     hp_search = hp_search.fit(train_feature_set, Y_train)
     predictions = hp_search.predict(test_feature_set)
@@ -89,5 +96,4 @@ def baseline_classify():
 
 if __name__ == "__main__":
     args = get_args()
-    if (args.mode == 'train'):
-        baseline_classify()
+    baseline_classify()
