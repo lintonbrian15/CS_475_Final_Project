@@ -84,5 +84,5 @@ def get_amazon_reviews_corpus_and_labels():
     rating_labels = raw_dataframe['reviews.rating'] # original ratings
     return rating_text, rating_labels
     
-if __name__ == "__main__":
-    get_amazon_reviews_corpus_and_labels()
+#if __name__ == "__main__":
+    #get_amazon_reviews_corpus_and_labels()
