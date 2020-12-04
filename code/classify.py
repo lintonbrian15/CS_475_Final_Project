@@ -11,6 +11,7 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import BaggingClassifier
 from joblib import dump, load # for saving model
+import pickle
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -38,15 +39,17 @@ def baseline_classify():
     sentiment_corpus = np.array(sentiment_corpus)
     sentiment_labels = np.array(sentiment_labels)
     X_train, X_test, Y_train, Y_test = train_test_split(sentiment_corpus, sentiment_labels, test_size=0.3, random_state=10)
-
+    #print(X_test.shape) (900,)
+    #print(X_train.shape) (2100,)
     # this section adapted from https://towardsdatascience.com/sentiment-classification-with-logistic-regression-analyzing-yelp-reviews-3981678c3b44
     if args.kernel == 'count':
         cv = CountVectorizer(binary=True, analyzer = 'word', min_df = 10, max_df = 0.95) # creates matrix of counts drops words in less than 10 docs or more than 95 percent of docs
     elif args.kernel == 'tfidf':
         cv = TfidfVectorizer()
     cv.fit_transform(X_train) # returns document-term matrix 
-    train_feature_set=cv.transform(X_train) # returns document-term matrix (represents frequency of terms in strings, rows are strings cols are terms)
-    test_feature_set=cv.transform(X_test) # type is scipy.sparse.csr.csr_matrix
+    pickle.dump(cv, open("tfidf.pickle", "wb"))
+    train_feature_set=cv.transform(X_train) # (2100, 4135) returns document-term matrix (represents frequency of terms in strings, rows are strings cols are terms)
+    test_feature_set=cv.transform(X_test) # (900, 4135) type is scipy.sparse.csr.csr_matrix
     # build the appropriate model
     if args.model == "logistic":
         lr = LogisticRegression(solver = 'liblinear', random_state = 42, max_iter=1000) # define classifier lr is simple for baseline
