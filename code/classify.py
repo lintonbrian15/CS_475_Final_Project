@@ -10,6 +10,7 @@ from sklearn.metrics import classification_report
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import BaggingClassifier
+from joblib import dump, load # for saving model
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -85,6 +86,7 @@ def baseline_classify():
     #hp_search = GridSearchCV(estimator=model, param_grid=param_grid)
     hp_search = hp_search.fit(train_feature_set, Y_train)
     predictions = hp_search.predict(test_feature_set)
+    dump(hp_search, 'models\svm.joblib') # save model
     #print('tuned parameters: {}'.format(hp_search.best_params_))
     print('tuned parameters: {}'.format(hp_search.get_params()))
     #print('best score is {}'.format(hp_search.best_score_))
@@ -97,3 +99,12 @@ def baseline_classify():
 if __name__ == "__main__":
     args = get_args()
     baseline_classify()
+
+# Just Ideas: we want to train the model, save the model, and then predict on the amazon reviews.
+# each amazon review is 1+ sentences long. For each sentence in each review, we want a 0 or 1. 
+# for each review, we sum these 0s and 1s to get a score that we divide by number of sentences in the review
+# we use this new score (sum / num sentences) to assign new rating to that review
+# save these ratings and compare against review 'labels' (original ratings)
+
+# how to save model?
+# how to predict on sentences one at a time?
