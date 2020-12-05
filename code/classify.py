@@ -6,6 +6,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LogisticRegression
 from sklearn import svm
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import GridSearchCV
@@ -22,14 +23,14 @@ from data import get_amazon_reviews_corpus_and_labels
 def get_args():
     parser = argparse.ArgumentParser(description="Choose model.")
 
-    parser.add_argument("--model", type=str, choices=['logistic', 'svm'], required=True, help="Which model do you want to use (logistic, svm, etc.) .")
+    parser.add_argument("--model", type=str, choices=['logistic', 'svm','rf'], required=True, help="Which model do you want to use (logistic, svm, etc.) .")
     # parser.add_argument("--mode", type=str, required=True, choices=["train", "test"],
     #                     help="Operating mode: train or test.")
     parser.add_argument("--kernel", type=str, required=True, choices=["count", "tfidf"],
                         help="Kernel function to use. Options include: count or tfidf.")
     # parser.add_argument("--model-file", type=str, required=True,
     #                     help="The name of the model file to create (for training) or load (for testing).")
-    # parser.add_argument("--predictions-file", type=str, help="The predictions file to create. (Only used for testing.)")
+    parser.add_argument("--predictions-file", type=str, help="The predictions file to create.")
     args = parser.parse_args()
 
     return args
@@ -83,17 +84,38 @@ def baseline_classify():
         'max_iter': [i for i in range(10,5000,20)], 'probability':[True]}
         model = svm.SVC()
 
+    else:
+        rf = RandomForestClassifier(max_depth=2, random_state=0)
+        rf.fit(train_feature_set, Y_train)
+        y_pred = rf.predict(test_feature_set)
+        print("Accuracy: ", round(accuracy_score(Y_test,y_pred),7))
+        report = classification_report(Y_test, y_pred, output_dict=True)
+        print('positive: ', report['1'])
+        print('negative: ', report['0'])
+
+        # set hyperparameters tuning grid 
+        param_grid={'criterion': ['gini', 'entropy'], 'n_estimators':[10,100,1000],
+                    'max_depth': [50,100,200,None], 'min_samples_leaf':[2,5]
+                    }
+        model = RandomForestClassifier()
+
     # Perform a hyperparameter search using training data
     hp_search = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=50, random_state=12345, cv=5)
     # hp_search = BaggingClassifier(base_estimator=hp_search, n_estimators=10, random_state=0)
     #hp_search = GridSearchCV(estimator=model, param_grid=param_grid)
     hp_search = hp_search.fit(train_feature_set, Y_train)
     predictions = hp_search.predict(test_feature_set)
-    dump(hp_search, 'models\svm.joblib') # save model
+    # save model
+    if args.model == "svm":
+        dump(hp_search, 'models/svm.joblib') 
+    elif args.model == "rf":
+        dump(hp_search, 'models/rf.joblib') 
     #print('tuned parameters: {}'.format(hp_search.best_params_))
     print('tuned parameters: {}'.format(hp_search.get_params()))
     #print('best score is {}'.format(hp_search.best_score_))
     print('best score is {}'.format(hp_search.score(test_feature_set, Y_test)))
+
+    # np.savetxt(args.predictions_file, predictions)
 
     return hp_search
 

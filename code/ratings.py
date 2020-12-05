@@ -8,7 +8,7 @@ import pickle
 
 if __name__ == "__main__":
     # just trying to load model
-    svm = load('models\svm.joblib')
+    svm = load('/Users/zhongqian/Desktop/Intro_to_ML/CS_475_Final_Project/code/models/svm.joblib')
     cv = pickle.load(open("tfidf.pickle", "rb"))
     amazon_corpus, amazon_labels = get_amazon_reviews_corpus_and_labels()
     predictions = []
@@ -37,6 +37,6 @@ if __name__ == "__main__":
             new_ratings.append(1)
     amazon_labels = np.array(amazon_labels)
     new_ratings = np.array(new_ratings)
-    savetxt('datasets\svm_new_ratings.csv', new_ratings, delimiter=',') # save as csv file
-    savetxt('datasets\original_amazon_ratings.csv', amazon_labels, delimiter=',') # save as csv file
+    savetxt('datasets/svm_new_ratings.csv', new_ratings, delimiter=',') # save as csv file
+    savetxt('datasets/original_amazon_ratings.csv', amazon_labels, delimiter=',') # save as csv file
     #test = cv.transform(amazon_corpus[0[0]])
