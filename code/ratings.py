@@ -8,13 +8,15 @@ import pickle
 
 if __name__ == "__main__":
     # just trying to load model
-    svm = load('/Users/zhongqian/Desktop/Intro_to_ML/CS_475_Final_Project/code/models/svm.joblib')
+    #svm = load('/Users/zhongqian/Desktop/Intro_to_ML/CS_475_Final_Project/code/models/svm.joblib')
+    rf = load('models/rf.joblib')
     cv = pickle.load(open("tfidf.pickle", "rb"))
     amazon_corpus, amazon_labels = get_amazon_reviews_corpus_and_labels()
     predictions = []
     for review in amazon_corpus: # get sentiment of each sentence in each review
         test = cv.transform(review)
-        prediction = svm.predict(test)
+        #prediction = svm.predict(test)
+        prediction = rf.predict(test)
         predictions.append(prediction)
     new_ratings = []
     for prediction in predictions: # generate new ratings
@@ -37,6 +39,7 @@ if __name__ == "__main__":
             new_ratings.append(1)
     amazon_labels = np.array(amazon_labels)
     new_ratings = np.array(new_ratings)
-    savetxt('datasets/svm_new_ratings.csv', new_ratings, delimiter=',') # save as csv file
-    savetxt('datasets/original_amazon_ratings.csv', amazon_labels, delimiter=',') # save as csv file
+    #savetxt('datasets/svm_new_ratings.csv', new_ratings, delimiter=',') # save as csv file
+    savetxt('datasets/rf_new_ratings.csv', new_ratings, delimiter=',')
+    #savetxt('datasets/original_amazon_ratings.csv', amazon_labels, delimiter=',') # save as csv file
     #test = cv.transform(amazon_corpus[0[0]])
