@@ -1,0 +1,179 @@
+sentence	prediction	true label
+happy	1	0
+give one look	0	1
+phone unusable new	1	0
+bars vegas ever recall charged tap water	1	0
+thing disappoint infra red port irda	1	0
+camera although rated impressive megapixels renders images fall well expectations relatively high resolution	1	0
+first n't wear well	1	0
+ironically mostly find films total waste time watch	1	0
+'ll looking new earpiece	1	0
+story starts fast absolutely suspense build-up slightest	1	0
+helen baxendale credible lady macbeth cheerfull times sometimes looks like naughty girl deadly taste blood evil	0	1
+applause given prelude however	0	1
+even love bad movies watch movie	1	0
+items stated included description included	1	0
+appears actually outperform original battery china came v325i	0	1
+like	1	0
+ever movie needed word-of-mouth promote	0	1
+wont work right atleast	1	0
+'s national treasure	0	1
+ca n't upload ringtones third party	1	0
+would recommend	0	1
+worth drive	0	1
+'ve bluetoooth headset time still comfortable way fits ear	1	0
+ca n't beat	0	1
+impressed price cases	0	1
+sushi strip place go	0	1
+find better movies youtube	1	0
+everyone treated equally special	0	1
+good money	1	0
+film redeeming features	1	0
+rest movie lacks art charm meaning 's emptiness works guess 's empty	1	0
+placed treo case snug lot extra room sides	1	0
+know gave	0	1
+film great actors master director significant theme least would-be significant theme undertone fifties existential world-weariness aerial scenes ought thrilled senses imagination characters one might deeply care	0	1
+would give television series plus could	0	1
+lasted one day blew	1	0
+rate film stinks funny fulci stayed giallo supernatural zombie movies	1	0
+complaints	0	1
+score mostly plot	0	1
+sort pap screened afternoon punish unemployed jobs	1	0
+'m probably one people ever go ians like	1	0
+anyways food definitely filling price pay expect	1	0
+little music anything speak	1	0
+short film certainly pulls punches	1	0
+could eat bruschetta day devine	0	1
+possible give zero stars 'd	1	0
+wanted	0	1
+ngage still lacking earbuds	1	0
+film way long	1	0
+black water thriller manages completely transcend 's limitations 's indie flick continually subverting expectations emerge intense experience	0	1
+much better hard plastic cases	0	1
+say bye bye tip lady	1	0
+phone thorn side really abhor	1	0
+watched prices inflate portions get smaller management attitudes grow rapidly	1	0
+recommended	1	0
+burgers n't good pizza used amazing doughy flavorless	1	0
+holster arrived match photo ad	1	0
+however-the riingtones best neither games	1	0
+allergy warnings menu waitress absolutely clue meals contain peanuts	1	0
+n't afraid subtitles worth little aversion therapy	0	1
+due happening every call forced stop using headset	1	0
+story also funny poignant times	0	1
+group claimed would handled us beautifully	0	1
+chilly unremarkable movie author living/working chilly abstruse culture	1	0
+tired clichã©s lazy writing come thick fast	1	0
+'d say would hardest decision honestly 's dishes taste supposed taste amazing	0	1
+beans rice mediocre best	1	0
+imagine every single one decisions made wrong	1	0
+monster chicken fried steak eggs time favorite	0	1
+actors truly understand become particular character delivering convincing sincere performance	0	1
+handles tough issues dignity grace course shocking spoiler	0	1
+none new ones ever quite worked properly	1	0
+bought nokia cell phone weeks ago nightmare	1	0
+yes film require rather significant amount puzzle-solving pieces fit together create beautiful picture	0	1
+talk great customer service course back	0	1
+back many times soon	0	1
+anyway plot flowed smoothly male-bonding scenes hoot	0	1
+wow bad film	1	0
+ca n't wait go back	0	1
+croutons also taste homemade extra plus	0	1
+film succeeds despite perhaps obviously meagre budget	0	1
+satisifed	0	1
+deeply impressed character played	0	1
+good bargain	1	0
+considering relations screen taylor stanwyck surprising little chemistry screen two	1	0
+small n't even realize getting used	0	1
+lordy khao soi dish missed curry lovers	0	1
+director neil labute uses brutal violence seperate dreams reality along touching drama hilarious comedy never tell going happen next	0	1
+'m big fan series mostly due anne rice 's style sensitivities treatments	0	1
+bought hoping could make bluetooth headset fit better things made impossible wear	1	0
+advise everyone fooled	1	0
+good	1	0
+scallop dish quite appalling value well	1	0
+totally believable	0	1
+bucks head really expect better food	1	0
+warm feeling service felt like guest special treat	0	1
+get extra minutes carry call get cut	0	1
+movie makes lot serious mistakes	1	0
+problem charge sandwich bigger subway sub offers better amount vegetables	1	0
+used two days n't always easy hear	1	0
+hilarious yummy christmas eve dinner remember biggest fail entire trip us	1	0
+would recommend	0	1
+clicks place way makes wonder long mechanism would last	1	0
+advise look	0	1
+'m sure long stood long enough begin feel awkwardly place	1	0
+'re familiar check	0	1
+guys steaks steak loving son steak best worst places said best steak 's ever eaten	0	1
+nothing short magnificent photography/cinematography film	0	1
+much interesting action suspense less unneeded controversy	0	1
+ca n't beat price	0	1
+unusable moving car freeway speed	1	0
+go place gyros	0	1
+back	0	1
+months screen went black sudden	1	0
+results well shame	1	0
+omg felt like never eaten thai food dish	0	1
+foreigner worth one second time	1	0
+n't last long	1	0
+first time going think quickly become regular	0	1
+place good film garbage	1	0
+time side restaurant almost empty excuse	1	0
+even sweet moments	0	1
+pale color instead nice char flavor	1	0
+makes easier keep bluetooth 'm wearing	1	0
+plan use car forget	1	0
+received pita huge lot meat thumbs	0	1
+humour get get day apt	0	1
+purchased within days longer working	1	0
+song could explain emotions subjects better jay adams unfortunate life subject talk song old man neil young played evokes many emotions	0	1
+makes strange ticking noises ends call	1	0
+anne heche utterly convincing	0	1
+thrilled seeing movie like	0	1
+movie-making	1	0
+chicken wings contained driest chicken meat ever eaten	1	0
+back good bbq lighter fare reasonable pricing tell public back old ways	0	1
+always used corded headsets freedom wireless helpful	0	1
+cashier friendly even brought food	0	1
+accents absolutely abysmal	1	0
+lady table next us found live green caterpillar salad	1	0
+phone fast sending kind messages web browsing significantly faster previous phones used	0	1
+tried talking real loud shouting telephone gets old still told n't great	1	0
+three different occasions asked well done medium well three times got bloodiest piece meat plate	1	0
+owner used work nobu place really similar half price	0	1
+film 's dialogue natural real life	0	1
+'s barely boring moment film plenty humorous parts	0	1
+acting beyond abysmal	1	0
+considering two us left full happy ca n't go wrong	0	1
+problems wit hit dropping signal	1	0
+weird vibe owners	1	0
+plan ordering	0	1
+also take pictures case lense covered	1	0
+shifting bubbling peeling even scratch nothing could n't happier new one droid	0	1
+confirm film would unfunny generic also managed give away entire movie 'm exaggerating every moment every plot point every joke told trailer	1	0
+impressed going original battery extended battery	0	1
+done second movie	1	0
+battery life still long enough motorola razor v3i	1	0
+'ll drivng along headset starts ringing reason	1	0
+20th century fox 's road house quite silly noir implausible unmitigated bore movie	1	0
+really impressive place n't closed	1	0
+light weight hardly notice	0	1
+story unfolds 18th century jutland use period music played period instruments one fine touch	0	1
+internet access fine rare instance worked	1	0
+'ve gotten much better service pizza place next door services received restaurant	1	0
+'s stupid keep buying new chargers car chargers cradles headphones car kits every time new phone comes	1	0
+way expensive	1	0
+seated immediately	0	1
+looking good quality motorola headset keep looking n't	1	0
+dissapointing performance	1	0
+zero stars would give zero stars	1	0
+well would 've given godfathers zero stars possible	1	0
+phenomenal food service ambiance	0	1
+today first taste buldogis gourmet hot dog tell ever thought possible	0	1
+n't like	1	0
+place	0	1
+even take self portraits outside exterior display cool	0	1
+delete film mind	1	0
+may say buffet pricey think get pay place getting quite lot	0	1
+hear 'm driving car usually n't even put 's loudest setting	0	1
