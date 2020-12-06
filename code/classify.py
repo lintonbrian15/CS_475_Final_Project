@@ -117,6 +117,15 @@ def baseline_classify():
 
     # np.savetxt(args.predictions_file, predictions)
 
+    with open(args.predictions_file, 'w+') as w:
+        w.write('sentence'+'\t'+'prediction'+'\t'+'true label'+'\n')
+        for i in range(len(predictions)):
+            if predictions[i] != Y_test[i]:
+                w.write(X_test[i]+'\t')
+                w.write(predictions[i]+'\t')
+                w.write(Y_test[i]+'\n')
+
+
     return hp_search
 
 
